@@ -20,10 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-import { Pagina2Component } from './components/pagina2/pagina2.component';
-import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { ErrorComponent } from './components/error/error.component';
-import { PeliculaDetailsComponent } from './components/pelicula-details/pelicula-details.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleDetailsComponent } from './components/article-details/article-details.component';
 import { SearchComponent } from './components/search/search.component';
@@ -42,10 +39,7 @@ import { AlertComponent } from './components/alert/alert.component';
     HomeComponent,
     BlogComponent,
     FormularioComponent,
-    Pagina2Component,
-    PeliculasComponent,
     ErrorComponent,
-    PeliculaDetailsComponent,
     esParPipe,
     ArticlesComponent,
     ArticleDetailsComponent,
