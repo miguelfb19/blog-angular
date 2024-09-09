@@ -1,0 +1,98 @@
+<app-slider [nombre]="'Editar Artículo'" [sliderSize]="'small'"></app-slider>
+<div class="center">
+  <section id="content">
+    <br />
+    <hr />
+    <br />
+    <form class="mid-form" #editForm="ngForm" (ngSubmit)="update()">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input
+          type="text"
+          name="title"
+          #title="ngModel"
+          [(ngModel)]="article.title"
+          required
+        />
+        <!--El pattern de HTML5 me permite validar campos de formulario con ciertas especificaciones, en este caso solo letras de la a-z en Mayus o Minus-->
+
+        <small class="invalidMessage" *ngIf="title.invalid && title.touched"
+          >El título es requerido</small
+        >
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="form-group">
+        <label for="content">Comentarios:</label>
+        <textarea
+          name="content"
+          #content="ngModel"
+          [(ngModel)]="article.content"
+          required
+        ></textarea>
+        <small class="invalidMessage" *ngIf="content.invalid && content.touched"
+          >El contenido es requerido</small
+        >
+        <div class="clearfix"></div>
+      </div>
+
+      <img
+          *ngIf="article.image"
+          src="{{ url + 'get-image/' + article.image }}"
+          alt="{{ article.title }}"
+        />
+        <div *ngIf="!article.image && fileAlert==2 || fileAlert == 1"><b>ESTE ARTÍCULO NO TIENE IMAGEN</b></div>
+
+      <div class="form-group">
+        <input
+          type="file"
+          class="file-input"
+          (change)="onFileSelected($event)"
+          #fileUpload
+        />
+
+        <div class="file-upload">
+
+          <button
+            mat-mini-fab
+            type="button"
+            color="primary"
+            class="upload-btn"
+            (click)="fileUpload.click()"
+          >
+          <span style="font-size: 17px;">{{ fileName || 'Subir imagen'}}</span>
+            <mat-icon> attach_file </mat-icon>
+          </button>
+        </div>
+        <small class="invalidMessage" *ngIf="fileAlert==1"
+          >Extensión de archivo inválida</small>
+        <div *ngIf="fileName" class="buttomsform">
+          <button type="button" class="btn buttonsform1-1" (click)="fileUpload.click()">
+            Cambiar imagen
+          </button>
+          <button type="button" class="btn buttonsform2-1" (click)="deleteImage()">
+            Borrar imagen
+          </button>
+        </div>
+        
+      </div>
+
+      <div class="buttomsform">
+        <input
+          type="submit"
+          value="Guardar"
+          class="btn btn-succes buttonsform1"
+          [disabled]="editForm.invalid || fileAlert == 1"
+        />
+        <input
+          type="reset"
+          value="Borrar"
+          class="btn btn-succes buttonsform2"
+        />
+      </div>
+    </form>
+  </section>
+
+  <app-side-bar></app-side-bar>
+</div>

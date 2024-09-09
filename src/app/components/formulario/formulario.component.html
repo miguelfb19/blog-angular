@@ -1,0 +1,98 @@
+<app-slider [nombre]="saliderFormText" [sliderSize]="'small'"></app-slider>
+<div class="center">
+  <section id="content">
+    <br />
+    <hr />
+    <br />
+    <form class="mid-form" #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input
+          type="text"
+          name="nombre"
+          #nombre="ngModel"
+          [(ngModel)]="user.nombre"
+          required
+          pattern="[a-zA-Z ]+"
+        />
+        <!--El pattern de HTML5 me permite validar campos de formulario con ciertas especificaciones, en este caso solo letras de la a-z en Mayus o Minus-->
+
+        <small class="invalidMessage" *ngIf="nombre.invalid && nombre.touched"
+          >El nombre es requerido</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input
+          type="text"
+          name="apellidos"
+          #apellidos="ngModel"
+          [(ngModel)]="user.apellidos"
+          required
+          pattern="[a-zA-Z ]+"
+        />
+
+        <small
+          class="invalidMessage"
+          *ngIf="apellidos.invalid && apellidos.touched"
+          >El apellido es requerido</small
+        >
+      </div>
+      <p>Selecciona tu sexo:</p>
+      <div class="form-group radiobuttoms">
+        <input
+          type="radio"
+          name="sexo"
+          value="hombre"
+          #sexo="ngModel"
+          [(ngModel)]="user.sexo"
+          required
+        />
+        Hombre
+        <input
+          type="radio"
+          name="sexo"
+          value="mujer"
+          #sexo="ngModel"
+          [(ngModel)]="user.sexo"
+          required
+        />
+        Mujer
+        <div class="clearfix"></div>
+      </div>
+
+      <small class="invalidMessage" *ngIf="sexo.invalid && sexo.touched"
+        >Selecciona un sexo</small
+      >
+
+      <div class="clearfix"></div>
+
+      <div class="form-group">
+        <label for="coment">Comentarios:</label>
+        <textarea
+          name="coment"
+          #comenterio="ngModel"
+          [(ngModel)]="user.comentario"
+          required
+        ></textarea>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="buttomsform">
+        <input
+          type="submit"
+          value="Enviar"
+          class="btn btn-succes buttonsform1"
+          [disabled]="userForm.invalid"
+        />
+        <input
+          type="reset"
+          value="Borrar"
+          class="btn btn-succes buttonsform2"
+        />
+      </div>
+    </form>
+  </section>
+
+  <app-side-bar></app-side-bar>
+</div>

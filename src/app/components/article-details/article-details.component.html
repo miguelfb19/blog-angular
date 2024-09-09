@@ -1,0 +1,31 @@
+<app-slider [sliderSize]="'small'" [nombre]="''"></app-slider>
+<div class="center">
+  <section>
+    <article class="articleDetails article-detail">
+      <h1 class="sub-header">{{ article.title }}</h1>
+      <div class="image-wrap">
+        <img
+          *ngIf="!article.image"
+          src="assets/images/sinImagen.jpg"
+          alt="{{ article.title }}"
+        />
+        <img
+          *ngIf="article.image"
+          src="{{ url + 'get-image/' + article.image }}"
+          alt="{{ article.title }}"
+        />
+      </div>
+      <span class="date">
+        {{ article.date | amLocale : "es" | amTimeAgo }}
+      </span>
+      <p>{{ article.content }}</p>
+    </article>
+
+    <div class="clearfix"></div>
+  </section>
+
+  <div class="btnEDE">
+    <a [routerLink]="['/blog/edit/'+article._id]" class="btn btn-edit">editar</a>
+    <button class="btn btn-delete" (click)="delete()">borrar</button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<app-slider [nombre]="title" [sliderSize]="'small'"></app-slider>
+<div class="center">
+  <section id="content">
+    <p>{{ contador }}</p>
+
+    <div
+      style="
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        gap: 5px;
+      "
+    >
+      <button class="btn" (click)="restarContador()">-</button>
+      <button class="btn" (click)="reiniciarContador()">Reiniciar</button>
+      <button class="btn" (click)="sumarContador()">+</button>
+    </div>
+
+    <!-- en angular el else se usa con la etiqueta ng-template para indicar dentro del if que etiqueta aplicar cuando no se cumpla la condicion -->
+    <h1 *ngIf="contador > 5; else menor">El contador ya tiene MÁS de 5</h1>
+
+    <ng-template #menor>
+      <h1 *ngIf="contador < -5; else intermedio">
+        El contador ya tiene MENOS de -5
+      </h1>
+    </ng-template>
+    <!-- en angular no existe la directiva elseif, se puede realizar algo similar usando ng-template anidando if y else para que se vayan cumpliendo las condiciones -->
+    <ng-template #intermedio>
+      <h1>El contador esta en condiciones ÓPTIMAS</h1>
+    </ng-template>
+    <button (click)="redireccion()">Llevame al formulario</button>
+  </section>
+
+  <app-side-bar></app-side-bar>
+</div>

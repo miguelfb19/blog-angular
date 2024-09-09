@@ -1,0 +1,28 @@
+<article class="article-item">
+  <div class="image-wrap">
+    <img alt="{{ pelicula.title }}" src="{{ pelicula.image }}" />
+  </div>
+
+  <h3 style="margin: 0 auto" [style.color]="i > 1 ? 'green' : 'red'">
+    Posicion {{ i }}
+  </h3>
+  <!--esta directiva ngStyle me permite poner un style condicional, aplicando
+            un estilo dependiendo de la condicion que se le de -->
+
+   <h2>{{ pelicula.title | uppercase }}</h2> <!--en este caso se usa una PIPE de angular para poner la letra en mayuscula -->
+
+  <span class="date">Hace 5 minútos </span>
+  <a href="#">Leer más</a>
+    <button style="margin-top: 5px;" (click)="seleccionar(pelicula)">Marcar como favorita</button>
+  <span
+    class="year"
+    [ngClass]="{
+      'year-green': pelicula.year > 2016,
+      'year-red': pelicula.year <= 2016
+    }"
+    >{{ pelicula.year }}
+  </span>
+  <!-- el ngClass me permite aplicar clases para una etiqueta segun se cumpla una condicion -->
+
+  <div class="clearfix"></div>
+</article>
