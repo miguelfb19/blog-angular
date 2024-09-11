@@ -13,7 +13,7 @@ export class AlertComponent implements OnInit{
       text: 'Por el momento, la carga y subida de imagenes esta deshabilitada debido al desarrollo del Back-End en producción. Las demás funcionalidades responden correctamente!!!',
       icon: 'info',
       confirmButtonText: 'Cerrar',
-      confirmButtonColor: '#4dbad8'
+      confirmButtonColor: '#b71c1c'
     });
   }
 
