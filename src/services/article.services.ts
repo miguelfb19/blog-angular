@@ -22,6 +22,12 @@ export class articleService{
         return this._http.get(this.url+'articles/true')
     }
 
+    getImagesFromDS3(articleImg:string): Observable<any> {
+        const url = Global.url;
+        const imgUrl = this._http.get(url + 'get-image/' + articleImg);
+        return imgUrl;
+      }
+
     getArt(articleId:string):Observable<any>{
         return this._http.get(this.url+'article/'+articleId)
     }

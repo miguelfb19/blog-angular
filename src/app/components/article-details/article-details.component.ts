@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class ArticleDetailsComponent implements OnInit {
   public article: Article;
   public url: string;
+  public articleImage: string;
   constructor(
     private _articleService: articleService,
     private _route: ActivatedRoute,
@@ -27,19 +28,35 @@ export class ArticleDetailsComponent implements OnInit {
     this._route.params.subscribe((params) => {
       let id = params['id'];
 
-      this._articleService.getArt(id).subscribe(
-        (response) => {
+      this._articleService.getArt(id).subscribe({
+        next: (response) => {
           if (response.article) {
             this.article = response.article;
+            console.log(response.article.image);
+      
+            if (response.article.image) {
+              this._articleService.getImagesFromDS3(response.article.image).subscribe({
+                next: (res) => {
+                  if (res?.fileUrl) {
+                    this.articleImage = res.fileUrl;
+                  }
+                },
+                error: (error) => {
+                  console.error('Error al obtener la imagen:', error);
+                  this.articleImage = 'assets/default-image.jpg';
+                },
+              });
+            }
           } else {
             this._router.navigate(['/home']);
           }
         },
-        (error) => {
-          console.log(error);
+        error: (error) => {
+          console.error('Error al obtener el artículo:', error);
           this._router.navigate(['/home']);
-        }
-      );
+        },
+      });
+      
     });
   }
 
