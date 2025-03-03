@@ -27,7 +27,7 @@ import { SearchComponent } from './components/search/search.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
 import { EditArticleComponent } from './components/edit-article/edit-article.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { AlertComponent } from './components/alert/alert.component';
+// import { AlertComponent } from './components/alert/alert.component';
 import { SingleArticleComponent } from './components/single-article/single-article.component';
 
 @NgModule({
@@ -47,7 +47,7 @@ import { SingleArticleComponent } from './components/single-article/single-artic
     SearchComponent,
     CreateArticleComponent,
     EditArticleComponent,
-    AlertComponent,
+    // AlertComponent,
     SingleArticleComponent,
   ],
   imports: [
