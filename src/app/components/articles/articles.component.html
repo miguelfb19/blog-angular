@@ -7,26 +7,9 @@
 </div>
 <div class="articles" *ngIf="articles || articles != []">
   <article
-    class="article-item"
     id="article-template"
     *ngFor="let article of articles"
   >
-    <div class="image-wrap">
-      <img
-        *ngIf="!article.image"
-        src="assets/images/sinImagen.jpg"
-        alt="{{ article.title }}"
-      />
-      <img
-        *ngIf="article.image"
-        src="{{ url + 'get-image/' + article.image }}"
-        alt="{{ article.title }}"
-      />
-    </div>
-
-    <h2>{{ article.title }}</h2>
-    <span class="date"> {{ article.date | amLocale : "es" | amTimeAgo }} </span>
-    <a [routerLink]="['/blog/article', article._id]">Leer más</a>
-    <div class="clearfix"></div>
+    <app-single-article [article]="article"></app-single-article>
   </article>
 </div>

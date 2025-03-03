@@ -1,0 +1,21 @@
+<div class="article-item">
+  <a [routerLink]="['/blog/article', article._id]">
+    <div class="image-wrap">
+      <img
+        *ngIf="!article.image"
+        src="assets/images/sinImagen.jpg"
+        alt="{{ article.title }}"
+      />
+      <img
+        *ngIf="article.image"
+        src="{{ articleImage }}"
+        alt="{{ article.title }}"
+      />
+    </div>
+  </a>
+  <div>
+    <h2>{{ article.title }}</h2>
+    <span class="date"> {{ article.date | amLocale : "es" | amTimeAgo }} </span>
+    <a [routerLink]="['/blog/article', article._id]">Leer más</a>
+  </div>
+</div>

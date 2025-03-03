@@ -28,6 +28,7 @@ import { CreateArticleComponent } from './components/create-article/create-artic
 import { EditArticleComponent } from './components/edit-article/edit-article.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AlertComponent } from './components/alert/alert.component';
+import { SingleArticleComponent } from './components/single-article/single-article.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AlertComponent } from './components/alert/alert.component';
     CreateArticleComponent,
     EditArticleComponent,
     AlertComponent,
+    SingleArticleComponent,
   ],
   imports: [
     BrowserModule,
